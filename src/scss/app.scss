@@ -1,0 +1,601 @@
+$fontSize:64;
+@function px2Rem($px){
+  @return $px/$fontSize + rem;
+}
+@function px($j,$k){
+  @return #{$j/$k *100 + "%"};
+}
+*{
+  margin:0;
+  padding:0;
+}
+%webwidth{
+  width:100%;
+  height:100%;
+}
+@mixin common($w,$h,$u,$t,$r){
+  width:px($w,640);
+  height:px($h,960);
+  background: url($u) no-repeat;
+  background-size:100% 100%;
+  position: absolute;
+  top:px($t,960);
+  right:px($r,640);
+}
+@mixin common1($w,$h,$u,$t,$l){
+  width:px($w,640);
+  height:px($h,960);
+  background: url($u) no-repeat;
+  background-size:100% 100%;
+  position: absolute;
+  top:px($t,960);
+  left:px($l,640);
+}
+html,body{
+  @extend %webwidth;
+}
+.swiper-container{
+  margin:0 auto;
+  max-width: 980px;
+  @extend %webwidth;
+}
+.music{
+  width:px2Rem(80);
+  height:px2Rem(80);
+  position: absolute;
+  top:px2Rem(25);
+  right:px2Rem(40);
+  z-index:4;
+  .music-a{
+    width:px2Rem(90);
+    height:px2Rem(90);
+    background:url("../images/music.gif");
+    background-size:contain;
+    text-align: center;
+    position: relative;
+    .music-c{
+      position: absolute;
+      top:50%;
+      left:50%;
+      margin-top:- px2Rem(30);
+      margin-left:- px2Rem(30);
+      width:px2Rem(60);
+      height:px2Rem(60);
+      background:url("../images/music.png");
+      background-size:100% 100%;
+      animation:cir 1s linear infinite;
+    }
+  }
+
+}
+@keyframes cir{
+  from {
+    transform:rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.swiper-slide {
+  background: url("../images/back.png") no-repeat;
+  background-size: cover;
+  @extend  %webwidth;
+  &:after{
+    content: '';
+    width:px2Rem(34);
+    height:px2Rem(28);
+    background:url("../images/web-swipe-tip.png") no-repeat;
+    background-size:100% 100%;
+    position: absolute;
+    left:0;
+    right:0;
+    margin:0 auto;
+    bottom:px2Rem(20);
+    animation: showUpDown 1s linear infinite;
+  }
+}
+@keyframes showUpDown {
+  from {
+    bottom: 20px;
+    opacity: 1;
+  }
+  to {
+    bottom: 35px;
+    opacity: 0;
+  }
+}
+.swiper-container{
+  @for $i from 1 through 8{
+    .box-#{$i}{
+      @if($i==1){
+        .item1{
+          width:px(408,640);
+          height:px(386,960);
+          position:absolute;
+          top:px(83,960);
+          left:px(112,640);
+          img{
+            width:100%;
+            height:100%;
+          }
+        }
+        .item2{
+          @include common1(206,150,"../images/f1.png",220,208);
+        }
+        .item3{
+          @include common1(104,126,"../images/f3.png",469,185);
+        }
+        .item4{
+          width: px(208,640);
+          height: px(194,940);
+          background:url("../images/f2.png");
+          background-size:100% 100%;
+          position: absolute;
+          bottom:px(13,960);
+          left:px(280,640);
+        }
+        .item5{
+          @include common1(117,337,"../images/pink.png",515,260);
+        }
+        .item6{
+          @include common1(145,361,"../images/back1.png",506,245);
+        }
+        .item7{
+          @include common1(117,337,"",515,260);
+          text-align: center;
+          font:bold px2Rem(64)/px2Rem(82) "";
+          color:#fff;
+          box-sizing: border-box;
+          padding-top:px2Rem(20);
+        }
+        .item8{
+          @include common1(72,72,"../images/coiner.png",515,260);
+        }
+        .item9{
+          @include common1(76,76,"../images/coiner1.png",776,298);
+        }
+        .item10{
+          @include common1(125,125,"../images/line2.png",494,226);
+        }
+        .item11{
+          @include common1(150,146,"../images/line2.png",735,269);
+        }
+      }@else if($i==2){
+        @for $j from 1 through 15{
+          .inner#{$j}{
+            @if($j==1){
+              width:px2Rem(574);
+              height:px2Rem(430);
+              background:url("../images/page1/pic.png") no-repeat;
+              background-size:contain;
+              position: absolute;
+              top:px(408,960);
+              left:px2Rem(41);
+              border:px2Rem(5) solid #fff;
+            }@else if($j==2){
+              @include common(80,196,"../images/back1.png",156,59);
+            }@else if($j==3){
+              @include common(65,185,"../images/pink.png",162,66);
+            }@else if($j==4){
+              font:bold px2Rem(40)/px2Rem(42) "";
+              color:#fff;
+              @include common(52,155,"",178,66);
+            }@else if($j==5){
+              @include common(40,40,"../images/coiner.png",162,91);
+            }@else if($j==6){
+              @include common(52,50,"../images/coiner1.png",298,66);
+            }@else if($j==7){
+              @include common(60,73,"../images/f3.png",135,100);
+            }@else if($j==8){
+              width:px(168,640);
+              height:px(182,960);
+              background: url("../images/page1/f2.png");
+              background-size:100% 100%;
+              position: absolute;
+              bottom:px(20,960);
+              right:px(36,640);
+            }@else if($j==9){
+              @include common1(360,240,"../images/page1/back.png",134,110);
+            }@else if($j==10){
+              @include common1(152,124,"../images/page1/f1.png",71,0);
+            }@else if($j==11){
+              @include common1(38,206,"",153,416);
+              font:bold px2Rem(36)/px2Rem(38) "";
+              color:#c57301;
+            }@else if($j==12){
+              @include common1(38,206,"",154,348);
+              font:bold px2Rem(36)/px2Rem(38) "";
+              color:#c57301;
+            } @else if($j==13){
+              @include common1(38,206,"",155,275);
+              font:bold px2Rem(36)/px2Rem(38) "";
+              color:#c57301;
+            }@else if($j==14){
+              @include common1(38,206,"",154,198);
+              font:bold px2Rem(36)/px2Rem(38) "";
+              color:#c57301;
+            }@else if($j==15){
+              @include common1(38,206,"",167,131);
+              font:bold px2Rem(36)/px2Rem(38) "";
+              color:#c57301;
+            }
+          }
+        }
+      }@else if($i==3){
+        @for $j from 1 through 25{
+          .con#{$j}{
+            @if($j==1){
+              @include common1(540,360,"../images/page2/pic.png",104,54);
+              border:px2Rem(5) solid #fff;
+            }@else if($j==2){
+              @include common1(148,122,"../images/page1/f1.png",23,2);
+            }@else if($j==3){
+              @include common(125,125,"../images/page2/c.png",334,55);
+            }@else if($j==4){
+              @include common(228,228,"../images/page2/line.png",282,10);
+            }@else if($j==5){
+              @include common(75,64,"",395,55);
+              font:bold px2Rem(30)/px2Rem(32) "Microsoft Yahei";
+              color:#fff;
+            }@else if($j==6){
+              @include common1(100,40,"../images/page2/f1.png",510,54);
+            }@else if($j==7){
+              @include common1(100,40,"../images/page2/f1.png",510,154);
+            }@else if($j==8){
+              @include common1(100,40,"../images/page2/f1.png",510,245);
+            }@else if($j==9){
+              @include common1(100,40,"../images/page2/f1.png",510,336);
+            }@else if($j==10){
+              @include common1(100,40,"../images/page2/f1.png",510,427);
+            }@else if($j==11){
+              @include common1(100,40,"../images/page2/f1.png",510,518);
+            }@else if($j==12){
+              @include common1(150,110,"../images/page2/f2.png",550,0);
+            }@else if($j==13){
+              @include common(153,110,"../images/page2/f3.png",806,0);
+            }@else if($j==14){
+              @include common1(5,215,"../images/page2/line1.png",667,98);
+            }@else if($j==15){
+              @include common1(5,215,"../images/page2/line1.png",667,208);
+            }@else if($j==16){
+              @include common1(5,215,"../images/page2/line1.png",667,318);
+            }@else if($j==17){
+              @include common1(5,215,"../images/page2/line1.png",667,428);
+            }@else if($j==18){
+              @include common1(5,215,"",667,492);
+              font:px2Rem(28)/px2Rem(30) "simhei";
+              color:#f55b2e;
+            } @else if($j==19){
+              @include common1(34,215,"",667,442);
+              font:px2Rem(30)/px2Rem(36) "simhei";
+              color:#c57301;
+            }@else if($j==20){
+              @include common1(5,215,"",667,377);
+              font:px2Rem(28)/px2Rem(30) "simhei";
+              color:#f55b2e;
+            } @else if($j==21){
+              @include common1(34,215,"",667,334);
+              font:px2Rem(30)/px2Rem(36) "simhei";
+              text-align: center;
+              color:#c57301;
+            }@else if($j==22){
+              @include common1(5,215,"",667,274);
+              font:px2Rem(28)/px2Rem(30) "simhei";
+              color:#f55b2e;
+            } @else if($j==23){
+              @include common1(34,215,"",667,223);
+              font:px2Rem(30)/px2Rem(36) "simhei";
+              text-align: center;
+              color:#c57301;
+            }@else if($j==24){
+              @include common1(5,215,"",667,162);
+              font:px2Rem(28)/px2Rem(30) "simhei";
+              color:#f55b2e;
+            } @else{
+              @include common1(34,215,"",667,116);
+              font:px2Rem(30)/px2Rem(36) "simhei";
+              text-align: center;
+              color:#c57301;
+            }
+          }
+        }
+      }@else if($i==4){
+        @for $j from 1 through 20{
+          .item#{$j}{
+            @if($j==1){
+              @include common1(125,85,"../images/page3/com.png",157,54);
+            }@else if($j==2){
+              @include common1(60,33,"",187,112);
+              font:px2Rem(38)/px2Rem(38) "simhei";
+              color:#eb6d77;
+            }@else if($j==3){
+              @include common1(136,88,"",160,198);
+              font:px2Rem(26)/px2Rem(28) "simhei";
+              color:#eb6d77;
+            }@else if($j==4){
+              @include common1(267,167,"../images/page3/xing1.png",129,334);
+              border:px2Rem(4) solid #fff;
+            }@else if($j==5){
+              @include common1(179,109,"../images/page3/down.png",197,443);
+            }@else if($j==6){
+              @include common1(125,85,"../images/page3/com.png",354,334);
+            }@else if($j==7){
+              @include common1(60,33,"",384,392);
+              font:px2Rem(38)/px2Rem(38) "simhei";
+              color:#eb6d77;
+            }@else if($j==8){
+              @include common1(136,88,"",357,478);
+              font:px2Rem(26)/px2Rem(28) "simhei";
+              color:#eb6d77;
+            }@else if($j==9){
+              @include common1(267,167,"../images/page3/se.png",315,55);
+              border:px2Rem(4) solid #fff;
+            }@else if($j==10){
+              @include common1(179,109,"../images/page3/up.png",304,36);
+            }@else if($j==11){
+              @include common1(125,85,"../images/page3/com.png",560,334);
+            }@else if($j==12){
+              @include common1(60,33,"",590,392);
+              font:px2Rem(38)/px2Rem(38) "simhei";
+              color:#eb6d77;
+            }@else if($j==13){
+              @include common1(136,88,"",563,478);
+              font:px2Rem(26)/px2Rem(28) "simhei";
+              color:#eb6d77;
+            }@else if($j==14){
+              @include common1(267,167,"../images/page3/wen.png",515,55);
+              border:px2Rem(4) solid #fff;
+            }@else if($j==15){
+              @include common1(179,109,"../images/page3/up.png",504,36);
+            }@else if($j==16){
+              @include common1(125,85,"../images/page3/com.png",749,54);
+            }@else if($j==17){
+              @include common1(60,33,"",779,112);
+              font:px2Rem(38)/px2Rem(38) "simhei";
+              color:#eb6d77;
+            }@else if($j==18){
+              @include common1(136,88,"",752,198);
+              font:px2Rem(26)/px2Rem(28) "simhei";
+              color:#eb6d77;
+            }@else if($j==19){
+              @include common1(267,167,"../images/page3/pin.png",711,334);
+              border:px2Rem(4) solid #fff;
+            }@else if($j==20){
+              @include common1(179,109,"../images/page3/down.png",793,443);
+            }
+          }
+        }
+      }@else if($i==5){
+        @for $j from 1 through 20{
+          .menu#{$j}{
+            @if($j==1){
+              @include common1(44,87,"../images/page4/f1.png",73,176);
+            }@else if($j==2){
+              @include common1(44,87,"../images/page4/f2.png",73,409);
+            }@else if($j==3){
+              @include common1(150,50,"",108,250);
+              font:px2Rem(36)/px2Rem(38) "simhei";
+              color:#eb717a;
+            }@else if($j==4){
+              @include common(205,265,"../images/page4/f3.png",160,0);
+            }@else if($j==5){
+              @include common1(197,270,"../images/page4/border.png",234,99);
+            }@else if($j==6){
+              @include common1(175,175,"../images/page4/pic1.png",245,109);
+              border:px2Rem(2) solid #f4f3f8;
+            }@else if($j==7){
+              @include common1(178,66,"",429,112);
+              background:#f6b4b9;
+            }@else if($j==8){
+              @include common1(175,50,"",435,112);
+              font:px2Rem(26)/px2Rem(28) "simhei";
+              color:#f55b2e;
+              text-align: center;
+            }@else if($j==9){
+              @include common1(170,98,"../images/page4/line.png",213,57);
+            }@else if($j==10){
+              @include common1(197,270,"../images/page4/border.png",443,375);
+            }@else if($j==11){
+              @include common1(175,175,"../images/page4/pic2.png",453,385);
+              border:px2Rem(2) solid #f4f3f8;
+            }@else if($j==12){
+              @include common1(178,66,"",636,388);
+              background:#f6b4b9;
+            }@else if($j==13){
+              @include common1(175,50,"",642,388);
+              font:px2Rem(26)/px2Rem(28) "simhei";
+              color:#f55b2e;
+              text-align: center;
+            }@else if($j==14){
+              @include common1(170,98,"../images/page4/line.png",412,333);
+            }@else if($j==15){
+              @include common1(197,270,"../images/page4/border.png",649,99);
+            }@else if($j==16){
+              @include common1(175,175,"../images/page4/pic2.png",659,109);
+              border:px2Rem(2) solid #f4f3f8;
+            }@else if($j==17){
+              @include common1(178,66,"",842,112);
+              background:#f6b4b9;
+            }@else if($j==18){
+              @include common1(175,50,"",848,112);
+              font:px2Rem(26)/px2Rem(28) "simhei";
+              color:#f55b2e;
+              text-align: center;
+            }@else if($j==19){
+              @include common1(170,98,"../images/page4/line.png",638,57);
+            }@else if($j==20){
+              @include common1(230,222,"../images/f2.png",730,348);
+            }
+          }
+        }
+      }@else if($i==6){
+        @for $j from 1 through 17{
+          .msg#{$j}{
+            @if($j==1){
+              @include common1(331,74,"../images/page5/border.png",106,143);
+            }@else if($j==2){
+              @include common1(306,56,"../images/page5/pink.png",114,155);
+            }@else if($j==3){
+              @include common1(288,30,"",128,170);
+              font:px2Rem(28)/px2Rem(30) "simhei";
+              color:#fff;
+            }@else if($j==4){
+              @include common1(85,42,"../images/page5/f1.png",65,264);
+            }@else if($j==5){
+              @include common1(242,202,"../images/page5/pic1.png",201,201);
+            }@else if($j==6){
+              @include common1(154,83,"../images/page5/line.png",262,180);
+            }@else if($j==7){
+              @include common1(58,28,"",248,130);
+              font:px2Rem(26)/px2Rem(28) "simhei";
+              color:#eb6d77;
+            }@else if($j==8){
+              @include common1(58,28,"",290,121);
+              font:px2Rem(26)/px2Rem(28) "simhei";
+              color:#eb6d77;
+            }@else if($j==9){
+              @include common1(58,28,"",330,123);
+              font:px2Rem(26)/px2Rem(28) "simhei";
+              color:#eb6d77;
+            }@else if($j==10){
+              @include common1(185,64,"../images/page5/border1.png",428,221);
+            }@else if($j==11){
+              @include common1(98,34,"",444,268);
+              font:px2Rem(30)/px2Rem(34) "simhei";
+              color:#eb6d77;
+            }@else if($j==12){
+              @include common1(362,84,"",503,132);
+              font:px2Rem(26)/px2Rem(28) "simhei";
+              color:#eb6d77;
+              text-align: center;
+            }@else if($j==13){
+              @include common1(185,64,"../images/page5/border1.png",591,221);
+            }@else if($j==14){
+              @include common1(98,34,"",610,268);
+              font:px2Rem(30)/px2Rem(34) "simhei";
+              color:#eb6d77;
+            }@else if($j==15){
+              @include common1(362,84,"",666,132);
+              font:px2Rem(26)/px2Rem(28) "simhei";
+              color:#eb6d77;
+              text-align: center;
+            }@else if($j==16){
+              @include common1(218,188,"../images/page5/pic2.png",749,204);
+            }
+            @else if($j==17){
+              width:px(265,640);
+              height:px(196,960);
+              background: url("../images/page5/f2.png") no-repeat;
+              background-size:100% 100%;
+              position: absolute;
+              bottom:0;
+              right:px(1,640);
+            }
+          }
+        }
+      }@else if($i==7){
+        @for $j from 1 through 18{
+          .reason#{$j}{
+            @if($j==1){
+              @include common1(244,105,"../images/page6/f1.png",20,191);
+            }@else if($j==2){
+              @include common1(45,85,"../images/page4/f1.png",103,118);
+            }@else if($j==3){
+              @include common1(45,85,"../images/page4/f2.png",103,453);
+            }@else if($j==4){
+              @include common1(270,32,"",140,176);
+              font:px2Rem(28)/px2Rem(32) "simhei";
+              color:#eb718f;
+            }@else if($j==5){
+              @include common1(295,116,"../images/page6/back.png",248,80);
+            }@else if($j==6){
+              @include common1(50,28,"",254,101);
+              font:bold px2Rem(28)/px2Rem(28) "simhei";
+              color:#eb718f;
+            }@else if($j==7){
+              @include common1(245,50,"",281,118);
+              font:px2Rem(24)/px2Rem(24) "simhei";
+              color:#fff;
+            }@else if($j==8){
+              @include common1(185,109,"../images/page6/pic1.png",246,370);
+              boder:px2Rem(1) solid #fff;
+            }@else if($j==9){
+              @include common1(295,116,"../images/page6/back.png",387,80);
+            }@else if($j==10){
+              @include common1(50,28,"",393,101);
+              font:bold px2Rem(28)/px2Rem(28) "simhei";
+              color:#eb718f;
+            }@else if($j==11){
+              @include common1(255,80,"",405,110);
+              font:px2Rem(24)/px2Rem(24) "simhei";
+              color:#fff;
+              text-indent: px2Rem(38);
+            }@else if($j==12){
+              @include common1(185,109,"../images/page6/pic2.png",385,370);
+              boder:px2Rem(1) solid #fff;
+            }@else if($j==13){
+              @include common1(295,116,"../images/page6/back.png",520,80);
+            }@else if($j==14){
+              @include common1(50,28,"",526,101);
+              font:bold px2Rem(28)/px2Rem(28) "simhei";
+              color:#eb718f;
+            }@else if($j==15){
+              @include common1(255,80,"",538,110);
+              font:px2Rem(24)/px2Rem(24) "simhei";
+              color:#fff;
+              text-indent: px2Rem(38);
+            }@else if($j==16){
+              @include common1(185,109,"../images/page6/pic3.png",518,370);
+              boder:px2Rem(1) solid #fff;
+            }@else if($j==17){
+              @include common1(479,147,"../images/page6/pic4.png",639,79);
+            }@else if($j==18){
+              @include common1(176,168,"../images/f2.png",790,0);
+            }
+          }
+        }
+      }@else{
+        @for $j from 1 through 20{
+          .inner#{$j}{
+            @if($j==1){
+              @include common1(389,116,"../images/page7/pink.png",20,114);
+            }@else if($j==2){
+              @include common1(45,85,"../images/page4/f1.png",110,170);
+            }@else if($j==3){
+              @include common1(45,85,"../images/page4/f2.png",110,414);
+            }@else if($j==4){
+              @include common1(270,32,"",140,225);
+              font:px2Rem(28)/px2Rem(32) "simhei";
+              color:#eb718f;
+            }@else if($j==5){
+              @include common1(374,346,"../images/page7/cup.png",213,139);
+            }@else if($j==6){
+              @include common1(77,150,"../images/page4/f1.png",611,150);
+            }@else if($j==7){
+              @include common1(77,150,"../images/page4/f2.png",611,390);
+            }@else if($j==8){
+              @include common1(161,164,"../images/page7/qq.png",605,228);
+            }@else if($j==9){
+              @include common1(330,50,"",785,150);
+              font:px2Rem(26)/px2Rem(30) "simhei";
+              color:#eb718f;
+              text-align: center;
+            }@else if($j==10){
+              width:100%;
+              height:px(123,960);
+              background: url("../images/page7/b.png") no-repeat;
+              background-size:100% 100%;
+              position: absolute;
+             left:0;
+              bottom:0;
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+}
+
+
